@@ -1,11 +1,14 @@
 odoo:
-  image: odoo
+  image: claytonsilva/odoo:digital-ocean
   ports:
     - "8069:8069"
-  links:
-    - db
-db:
-  image: postgres
-  environment:
-    - POSTGRES_USER=odoo
-    - POSTGRES_PASSWORD=odoo
+volumes:
+    - ${odoo_dir}:/home/odoo/.local
+external_links:
+    - ${postgresql_source}:db
+environment:
+  - PGHOST=db
+  - ADMIN_PASSWORD=${admin_password}
+  - PGUSER=${pguser}
+  - PGPORT=${pgport}
+  - PGPASSWORD=${pgpassword}

@@ -1,8 +1,34 @@
 .catalog:
   name: "Odoo"
-  version: "0.1-educaas"
+  version: "0.1-gerencio"
   description: "ERP management powered by Odoo"
   uuid: odoo-0
   questions:
-
+    - variable: "postgresql_source"
+      description: "Link to postgresql service or stack/service"
+      label: "Postgresql source"
+      type: "service"
+      required: true
+    - variable: "admin_password"
+      label: "Admin Password for Odoo"
+      description: "Admin Password for Odoo"
+      required: true
+      type: "string"
+    - variable: "pguser"
+      label: "User Odoo for postgresql"
+      description: "User Odoo for postgresql"
+      required: true
+      type: "string"
+      default: "odoo"
+    - variable: "pgpassword"
+      label: "Password Odoo for postgresql"
+      description: "Password Odoo for postgresql"
+      required: true
+      type: "string"
+    - variable: "pgport"
+      label: "TCP Port for postgresql"
+      description: "TCP Port for postgresql"
+      required: true
+      type: "string"
+      default: 5432
 odoo:
