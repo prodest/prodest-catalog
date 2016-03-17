@@ -36,4 +36,3 @@
       description: "main dir to mount odoo"
       required: true
       type: "string"
-odoo:
