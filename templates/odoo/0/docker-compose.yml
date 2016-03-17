@@ -4,8 +4,8 @@ odoo:
     - "8069:8069"
 volumes:
     - ${odoo_dir}:/home/odoo/.local
-external_links:
-    - ${postgresql_source}:db
+# external_links:
+#     - ${postgresql_source}:db
 environment:
   - PGHOST=db
   - ADMIN_PASSWORD=${admin_password}
