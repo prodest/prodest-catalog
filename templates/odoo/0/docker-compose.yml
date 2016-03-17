@@ -12,3 +12,5 @@ environment:
   - PGUSER=${pguser}
   - PGPORT=${pgport}
   - PGPASSWORD=${pgpassword}
+labels:
+    io.rancher.container.hostname_override: container_name

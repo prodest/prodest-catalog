@@ -9,6 +9,7 @@
       label: "Postgresql source"
       type: "service"
       required: true
+      default: "data/postgresql"
     - variable: "admin_password"
       label: "Admin Password for Odoo"
       description: "Admin Password for Odoo"
@@ -29,8 +30,8 @@
       label: "TCP Port for postgresql"
       description: "TCP Port for postgresql"
       required: true
-      type: "int"
-      default: 5432
+      type: "string"
+      default: "5432"
     - variable: "odoo_dir"
       label: "main dir to mount odoo"
       description: "main dir to mount odoo"
