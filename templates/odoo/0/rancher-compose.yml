@@ -30,7 +30,7 @@
       label: "TCP Port for postgresql"
       description: "TCP Port for postgresql"
       required: true
-      type: "number"
+      type: "int"
       default: 5432
     - variable: "odoo_dir"
       label: "main dir to mount odoo"
