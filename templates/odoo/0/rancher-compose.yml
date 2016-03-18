@@ -9,7 +9,7 @@
       label: "Postgresql source"
       type: "service"
       required: true
-      default: "data/postgresql"
+      default: "data/postgres"
     - variable: "admin_password"
       label: "Admin Password for Odoo"
       description: "Admin Password for Odoo"
@@ -37,3 +37,13 @@
       description: "main dir to mount odoo"
       required: true
       type: "string"
+odoo:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 8069
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
