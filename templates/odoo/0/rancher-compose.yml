@@ -4,20 +4,12 @@
   description: "ERP management powered by Odoo"
   uuid: odoo-0
   questions:
-    # - variable: "postgresql_source"
-    #   description: "Link to postgresql service or stack/service"
-    #   label: "Postgresql source"
-    #   type: "service"
-    #   required: true
-    #   default: "data/postgresql"
-    - variable: "elasticsearch_link"
-      description: |
-        stack/service link or external service link to elasticsearch
-        cluster.
-      label: "Elasticsearch stack/service"
-      default: "es/elasticsearch-clients"
-      required: true
+    - variable: "postgresql_source"
+      description: "Link to postgresql service or stack/service"
+      label: "Postgresql source"
       type: "service"
+      required: true
+      default: "data/postgresql"
     - variable: "admin_password"
       label: "Admin Password for Odoo"
       description: "Admin Password for Odoo"
