@@ -1,17 +1,17 @@
-odoo:
-  image: claytonsilva/odoo:digital-ocean
-  volumes:
-      - '${odoo_dir}:/home/odoo/.local'
-  external_links:
-  - ${postgresql_source}:db
-  environment:
-    PGHOST: db
-    ADMIN_PASSWORD: ${admin_password}
-    PGUSER: ${pguser}
-    PGPORT: ${pgport}
-    PGPASSWORD: ${pgpassword}
+odoo: 
   command: 
-    - --
-  labels:
+    - "--"
+  environment: 
+    ADMIN_PASSWORD: "${admin_password}"
+    PGHOST: db
+    PGPASSWORD: "${pgpassword}"
+    PGPORT: "${pgport}"
+    PGUSER: "${pguser}"
+  external_links: 
+    - "${POSTGRESQL_SOURCE}:db"
+  image: "claytonsilva/odoo:digital-ocean"
+  labels: 
     io.rancher.container.hostname_override: container_name
-  
+  stdin_open: true
+  volumes: 
+    - "${odoo_dir}:/home/odoo/.local"

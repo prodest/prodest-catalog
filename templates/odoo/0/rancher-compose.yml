@@ -4,12 +4,11 @@
   description: "ERP management powered by Odoo"
   uuid: odoo-0
   questions:
-    - variable: "postgresql_source"
+    - variable: POSTGRESQL_SOURCE
       description: "Link to postgresql service or stack/service"
       label: "Postgresql source"
       type: "service"
       required: true
-      default: "data/postgres"
     - variable: "admin_password"
       label: "Admin Password for Odoo"
       description: "Admin Password for Odoo"
