@@ -12,5 +12,7 @@ odoo:
     - PGUSER=${pguser}
     - PGPORT=${pgport}
     - PGPASSWORD=${pgpassword}
+  command: 
+    - '--'
   labels:
       io.rancher.container.hostname_override: container_name
