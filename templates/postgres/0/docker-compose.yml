@@ -5,14 +5,13 @@ postgres-datavolume:
     io.rancher.container.hostname_override: container_name
   entrypoint: /bin/true
   volumes:
-  - ${data}
+  - ${data}:/var/lib/postgresql/data
 postgres:
   image: xdevelsistemas/debian-env:postgresql-env
   labels:
     io.rancher.sidekicks: postgres-datavolume   
     io.rancher.container.hostname_override: container_name
   environment:
-    PGDATA: /var/lib/postgresql/data
     POSTGRES_DB: ${dbname}
     POSTGRES_USER: ${dbuser}
     POSTGRES_PASSWORD: ${dbpassword}
