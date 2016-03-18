@@ -1,15 +1,15 @@
 odoo:
   image: claytonsilva/odoo:digital-ocean
   volumes:
-      - ${odoo_dir}:/home/odoo/.local
+      - '${odoo_dir}:/home/odoo/.local'
   external_links:
       - ${postgresql_source}:db
   environment:
-    - PGHOST: db
-    - ADMIN_PASSWORD: ${admin_password}
-    - PGUSER: ${pguser}
-    - PGPORT: ${pgport}
-    - PGPASSWORD: ${pgpassword}
+    PGHOST: db
+    ADMIN_PASSWORD: ${admin_password}
+    PGUSER: ${pguser}
+    PGPORT: ${pgport}
+    PGPASSWORD: ${pgpassword}
   command: 
     - --
   labels:
