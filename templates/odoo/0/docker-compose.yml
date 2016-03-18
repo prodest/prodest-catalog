@@ -1,7 +1,5 @@
 odoo:
   image: claytonsilva/odoo:digital-ocean
-  ports:
-    - "8069:8069"
   volumes:
       - ${odoo_dir}:/home/odoo/.local
   external_links:
@@ -13,6 +11,7 @@ odoo:
     - PGPORT=${pgport}
     - PGPASSWORD=${pgpassword}
   command: 
-    - '--'
+    - --
   labels:
-      io.rancher.container.hostname_override: container_name
+    io.rancher.container.hostname_override: container_name
+ 
