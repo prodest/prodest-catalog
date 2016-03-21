@@ -110,26 +110,7 @@
       type: "string"
       default: "/home/core/dockerdata/taiga-back"
 taiga-back:
-  scale: 1
-  retain_ip: true
-  health_check:
-    port: 8000
-    interval: 30000
-    unhealthy_threshold: 3
-    strategy: recreate
-    response_timeout: 2000
-    healthy_threshold: 2
 taiga-back:
-  scale: 1
-  retain_ip: true
-  health_check:
-    port: 80
-    interval: 30000
-    unhealthy_threshold: 3
-    strategy: recreate
-    response_timeout: 2000
-    healthy_threshold: 2
-
 
 
 
