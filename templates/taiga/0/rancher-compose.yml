@@ -135,12 +135,6 @@
       required: true
       type: "string"
       default: "/home/core/dockerdata/taiga-back"
-    - variable: "taiga-back-data"
-      label: "Taiga volume for mount"
-      description: "Taiga volume for mount"
-      required: true
-      type: "string"
-      default: "/home/core/dockerdata/taiga-back"    
 taiga-back:
   scale: 1
   retain_ip: true
