@@ -1,18 +1,38 @@
-postgres:
-    image: postgres
-
-taigaback:
-    image: ipedrazas/taiga-back
-    links:
-        - postgres:postgres
-    ports:
-        - "8000:8000"
-
-taigafront:
-    image: ipedrazas/taiga-front
-    links:
-        - taigaback:taiga-back
-    ports:
-        - "80:80"
+taiga-back:
+    image: xdevelsistemas/taiga:taiga-back
+    external_links:
+        - ${POSTGRESQL_SOURCE}:postgres
     environment:
-        - "API_NAME=boot2docker"
+        EMAIL_USE_SSL: ${EMAIL_USE_SSL}
+        HOSTNAME: ${HOSTNAME}
+        SECRET_KEY: ${SECRET_KEY}
+        DEBUG: ${DEBUG}
+        TEMPLATE_DEBUG: ${TEMPLATE_DEBUG}
+        PUBLIC_REGISTER_ENABLED: ${PUBLIC_REGISTER_ENABLED}
+        MEDIA_URL: ${MEDIA_URL}
+        STATIC_URL: ${STATIC_URL}
+        API_SCHEME: ${API_SCHEME}
+        API_DOMAIN: ${API_DOMAIN}
+        FRONT_SCHEME: ${FRONT_SCHEME}
+        FRONT_DOMAIN: ${FRONT_DOMAIN}
+        EMAIL_USE_TLS: ${EMAIL_USE_TLS}
+        EMAIL_HOST: ${EMAIL_HOST}
+        EMAIL_PORT: ${EMAIL_PORT}
+        EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+        EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+        DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL}
+        POSTGRES_USER: ${POSTGRES_USER}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_HOST: postgres
+        TAIGA_GITHUB_CLIENT_ID: ${TAIGA_GITHUB_CLIENT_ID}
+        TAIGA_GITHUB_CLIENT_SECRET: ${TAIGA_GITHUB_CLIENT_SECRET}
+    volumes:
+        - "${taiga-back-data}:/usr/local/taiga/media"
+taiga-front:
+    image: xdevelsistemas/taiga:taiga-front-dist
+    links:
+        - taiga-back:taigaback
+    environment:
+        YOUR-GITHUB-CLIENT-ID: ${TAIGA_GITHUB_CLIENT_ID}
+    volumes-from:
+        - taiga-back

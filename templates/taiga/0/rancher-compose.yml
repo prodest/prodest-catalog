@@ -1,10 +1,172 @@
 .catalog:
   name: "Taiga"
-  version: "v0.1-educaas"
+  version: "v0.1-gerencio"
   description: "Project management platform for agile developers"
   uuid: taiga-0
   minimum_rancher_version: v0.51.0
   questions:
+    - variable: POSTGRESQL_SOURCE
+      description: "Link to postgresql service or stack/service"
+      label: "Postgresql source"
+      type: "service"
+      required: true
+    - variable: "HOSTNAME"
+      label: "Hostname used by taiga"
+      description: "Hostname used by taiga"
+      required: true
+      type: "string"
+    - variable: "SECRET_KEY"
+      label: "Secret key"
+      description: "Secret key used by taiga api"
+      required: true
+      type: "string"
+    - variable: "DEBUG"
+      label: "Enable Debug?"
+      description: "Enable Debug?"
+      required: true
+      type: "string"
+      default: "False"
+    - variable: "TEMPLATE_DEBUG"
+      label: "Enable Debug on Template ?"
+      description: "Enable Debug on Template ?"
+      required: true
+      type: "string"
+      default: "False"
+    - variable: "PUBLIC_REGISTER_ENABLED"
+      label: "Enable public subscriptions?"
+      description: "Enable public subscriptions?"
+      required: true
+      type: "string"
+      default: "False"
+    - variable: "MEDIA_URL"
+      label: "Media URL"
+      description: "Media URL"
+      required: true
+      type: "string"
+    - variable: "STATIC_URL"
+      label: "Static URL"
+      description: "Static URL"
+      required: true
+      type: "string"
+    - variable: "API_SCHEME"
+      label: "API Scheme (http or https)"
+      description: "API Scheme (http or https)"
+      required: true
+      type: "string"
+      default: "http"
+    - variable: "API_DOMAIN"
+      label: "API Domain"
+      description: "API Domain"
+      required: true
+      type: "string"
+    - variable: "FRONT_SCHEME"
+      label: "Front Scheme (http or https)"
+      description: "Front Scheme (http or https)"
+      required: true
+      type: "string"
+      default: "http"
+    - variable: "FRONT_DOMAIN"
+      label: "Front Domain"
+      description: "Front Domain"
+      required: true
+      type: "string"    
+    - variable: "EMAIL_USE_TLS"
+      label: "Use TLS on email?"
+      description: "Use TLS on email?"
+      required: true
+      type: "string"
+      default: "True"
+    - variable: "EMAIL_USE_SSL"
+      label: "Use ssl on email?"
+      description: "Use ssl on email?"
+      required: true
+      type: "string"
+      default: "True"
+    - variable: "EMAIL_HOST"
+      label: "Email host"
+      description: "Email Host"
+      required: true
+      type: "string"
+    - variable: "EMAIL_PORT"
+      label: "Email port"
+      description: "Email Port"
+      required: true
+      type: "string"
+    - variable: "EMAIL_HOST_USER"
+      label: "Email host User"
+      description: "Email host User"
+      required: true
+      type: "string"
+    - variable: "EMAIL_HOST_PASSWORD"
+      label: "Email password"
+      description: "Email password"
+      required: true
+      type: "string"
+    - variable: "DEFAULT_FROM_EMAIL"
+      label: "Default from email"
+      description: "Default from email"
+      required: true
+      type: "string"
+    - variable: "POSTGRES_USER"
+      label: "postgres user"
+      description: "postgres user"
+      required: true
+      type: "string"
+      default: "taiga"
+    - variable: "POSTGRES_PASSWORD"
+      label: "postgres password"
+      description: "postgres password"
+      required: true
+      type: "string"
+      default: "taiga"
+    - variable: "TAIGA_GITHUB_CLIENT_ID"
+      label: "Taiga github id for integration"
+      description: "Taiga github id for integration"
+      required: true
+      type: "string"
+    - variable: "TAIGA_GITHUB_CLIENT_SECRET"
+      label: "Taiga github secret for integration"
+      description: "Taiga github secret for integration"
+      required: true
+      type: "string"
+    - variable: "taiga-back-data"
+      label: "Taiga volume for mount"
+      description: "Taiga volume for mount"
+      required: true
+      type: "string"
+      default: "/home/core/dockerdata/taiga-back"
+    - variable: "taiga-back-data"
+      label: "Taiga volume for mount"
+      description: "Taiga volume for mount"
+      required: true
+      type: "string"
+      default: "/home/core/dockerdata/taiga-back"    
+taiga-back:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 8000
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
+taiga-back:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 80
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
 
 
-taiga:
+
+
+
+
+
+
+
