@@ -1,0 +1,14 @@
+.catalog:
+  name: "RethinkDb"
+  version: "0.1-gerencio"
+  description: "RethinkDb"
+  uuid: rethinkdb-0
+  minimum_rancher_version: v0.46.0
+  questions:
+    - variable: RETHINKDB_DIR
+      description: "Dir to mount RethinkDb"
+      label: "Dir to mount RethinkDb"
+      type: "string"
+      required: true
+      default: "/home/core/dockerdata/rethinkdb"
+rethinkdb:

@@ -1,0 +1,5 @@
+name: RethinkDB
+description: |
+  RethinkDB.
+version: 0.1-gerencio
+category: Database
