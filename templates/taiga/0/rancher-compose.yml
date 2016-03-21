@@ -38,38 +38,12 @@
       required: true
       type: "string"
       default: "False"
-    - variable: "MEDIA_URL"
-      label: "Media URL"
-      description: "Media URL"
-      required: true
-      type: "string"
-    - variable: "STATIC_URL"
-      label: "Static URL"
-      description: "Static URL"
-      required: true
-      type: "string"
-    - variable: "API_SCHEME"
-      label: "API Scheme (http or https)"
-      description: "API Scheme (http or https)"
+    - variable: "SCHEME"
+      label: "Scheme (http or https)"
+      description: "Scheme (http or https)"
       required: true
       type: "string"
       default: "http"
-    - variable: "API_DOMAIN"
-      label: "API Domain"
-      description: "API Domain"
-      required: true
-      type: "string"
-    - variable: "FRONT_SCHEME"
-      label: "Front Scheme (http or https)"
-      description: "Front Scheme (http or https)"
-      required: true
-      type: "string"
-      default: "http"
-    - variable: "FRONT_DOMAIN"
-      label: "Front Domain"
-      description: "Front Domain"
-      required: true
-      type: "string"    
     - variable: "EMAIL_USE_TLS"
       label: "Use TLS on email?"
       description: "Use TLS on email?"

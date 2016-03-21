@@ -1,7 +1,7 @@
 taiga-back:
     image: xdevelsistemas/taiga:taiga-back
     external_links:
-        - ${POSTGRESQL_SOURCE}:postgres
+    - ${POSTGRESQL_SOURCE}:postgres
     environment:
         EMAIL_USE_SSL: ${EMAIL_USE_SSL}
         HOSTNAME: ${HOSTNAME}
@@ -9,12 +9,12 @@ taiga-back:
         DEBUG: ${DEBUG}
         TEMPLATE_DEBUG: ${TEMPLATE_DEBUG}
         PUBLIC_REGISTER_ENABLED: ${PUBLIC_REGISTER_ENABLED}
-        MEDIA_URL: ${MEDIA_URL}
-        STATIC_URL: ${STATIC_URL}
-        API_SCHEME: ${API_SCHEME}
-        API_DOMAIN: ${API_DOMAIN}
-        FRONT_SCHEME: ${FRONT_SCHEME}
-        FRONT_DOMAIN: ${FRONT_DOMAIN}
+        MEDIA_URL: ${SCHEME}://${HOSTNAME}/media/
+        STATIC_URL: ${SCHEME}://${HOSTNAME}/static/
+        API_SCHEME: ${SCHEME}
+        API_DOMAIN: ${HOSTNAME}
+        FRONT_SCHEME: ${SCHEME}
+        FRONT_DOMAIN: ${HOSTNAME}
         EMAIL_USE_TLS: ${EMAIL_USE_TLS}
         EMAIL_HOST: ${EMAIL_HOST}
         EMAIL_PORT: ${EMAIL_PORT}
@@ -27,12 +27,12 @@ taiga-back:
         TAIGA_GITHUB_CLIENT_ID: ${TAIGA_GITHUB_CLIENT_ID}
         TAIGA_GITHUB_CLIENT_SECRET: ${TAIGA_GITHUB_CLIENT_SECRET}
     volumes:
-        - "${taiga-back-data}:/usr/local/taiga/media"
+    - ${taiga-back-data}:/usr/local/taiga/media
 taiga-front:
     image: xdevelsistemas/taiga:taiga-front-dist
     links:
-        - taiga-back:taigaback
+    - taiga-back:taigaback
     environment:
         YOUR-GITHUB-CLIENT-ID: ${TAIGA_GITHUB_CLIENT_ID}
     volumes-from:
-        - taiga-back
+    - taiga-back
