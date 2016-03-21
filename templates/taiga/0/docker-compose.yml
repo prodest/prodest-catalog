@@ -28,6 +28,8 @@ taiga-back:
         TAIGA_GITHUB_CLIENT_SECRET: ${TAIGA_GITHUB_CLIENT_SECRET}
     volumes:
     - "${TAIGA_BACK_DATA}/media:/usr/local/taiga/media"
+    - "${TAIGA_BACK_DATA}/static:/usr/local/taiga/static"
+    - "${TAIGA_BACK_DATA}/logs:/usr/local/taiga/logs"
 taiga-front:
     image: xdevelsistemas/taiga:taiga-front-dist
     links:
@@ -35,4 +37,6 @@ taiga-front:
     environment:
         YOUR-GITHUB-CLIENT-ID: ${TAIGA_GITHUB_CLIENT_ID}
     volumes-from:
-    - taiga-back
+    - "${TAIGA_BACK_DATA}/media:/usr/local/taiga/media"
+    - "${TAIGA_BACK_DATA}/static:/usr/local/taiga/static"
+    - "${TAIGA_BACK_DATA}/logs:/usr/local/taiga/logs"
