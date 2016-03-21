@@ -103,7 +103,7 @@
       description: "Taiga github secret for integration"
       required: true
       type: "string"
-    - variable: "taiga-back-data"
+    - variable: TAIGA_BACK_DATA
       label: "Taiga volume for mount"
       description: "Taiga volume for mount"
       required: true
