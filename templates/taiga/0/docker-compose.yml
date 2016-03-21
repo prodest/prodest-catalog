@@ -36,7 +36,7 @@ taiga-front:
     - taiga-back:taigaback
     environment:
         YOUR-GITHUB-CLIENT-ID: ${TAIGA_GITHUB_CLIENT_ID}
-    volumes-from:
+    volumes:
     - "${TAIGA_BACK_DATA}/media:/usr/local/taiga/media"
     - "${TAIGA_BACK_DATA}/static:/usr/local/taiga/static"
     - "${TAIGA_BACK_DATA}/logs:/usr/local/taiga/logs"
