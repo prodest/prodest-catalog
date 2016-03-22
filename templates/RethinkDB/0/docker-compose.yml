@@ -4,4 +4,4 @@ rethinkdb:
     io.rancher.container.hostname_override: container_name
   image: xdevelsistemas/debian-env:rethinkdb-env
   volumes: 
-    - "${rethinkdb-dir}:/data"
+    - "${RETHINKDB_DIR}:/data"

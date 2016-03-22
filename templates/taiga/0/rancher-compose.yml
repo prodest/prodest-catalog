@@ -5,11 +5,6 @@
   uuid: taiga-0
   minimum_rancher_version: v0.51.0
   questions:
-    - variable: POSTGRESQL_SOURCE
-      description: "Link to postgresql service or stack/service"
-      label: "Postgresql source"
-      type: "service"
-      required: true
     - variable: "HOSTNAME"
       label: "Hostname used by taiga"
       description: "Hostname used by taiga"
@@ -49,7 +44,7 @@
       description: "Use TLS on email?"
       required: true
       type: "string"
-      default: "True"
+      default: "False"
     - variable: "EMAIL_USE_SSL"
       label: "Use ssl on email?"
       description: "Use ssl on email?"
