@@ -88,6 +88,12 @@
       required: true
       type: "string"
       default: "taiga"
+    - variable: POSTGRESQL_DATA
+      label: "postgres volume for mount"
+      description: "postgres volume for mount"
+      required: true
+      type: "string"
+      default: "/home/core/dockerdata/taiga-back"
     - variable: "TAIGA_GITHUB_CLIENT_ID"
       label: "Taiga github id for integration"
       description: "Taiga github id for integration"
