@@ -12,9 +12,9 @@ postgres:
     io.rancher.sidekicks: postgres-datavolume   
     io.rancher.container.hostname_override: container_name
   environment:
-    POSTGRES_DB: ${dbname}
-    POSTGRES_USER: ${dbuser}
-    POSTGRES_PASSWORD: ${dbpassword}
+    POSTGRES_DB: taiga
+    POSTGRES_USER: ${POSTGRES_USER}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   volumes_from:
   - postgres-datavolume
 taiga-back:
