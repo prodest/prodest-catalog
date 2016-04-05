@@ -5,8 +5,13 @@
     Apache Mesos Master Node.
   minimum_rancher_version: v0.56.0
   maintainer: "Clayton Silva <clayton@xdevel.com.br>"
-  uuid: zk-0
+  uuid: mesos-master-0
   questions:
+    - variable: "zookeeper"
+      description: "zookeeper service to link"
+      label: "Cluster Name (without spaces)"
+      required: true
+      type: "service"
     - variable: "CLUSTER"
       description: "Cluster Name (without spaces)"
       label: "Cluster Name (without spaces)"
