@@ -1,0 +1,8 @@
+name: Apache Mesos
+description: |
+  Apache Mesos
+version: 0.2-veronica
+category: clustering
+maintainer: "CLayton Silva <clayton@xdevel.com.br>"
+minimum_rancher_version: v0.56.0
+license: 

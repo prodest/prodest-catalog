@@ -1,0 +1,46 @@
+.catalog:
+  name: Mesos Master
+  version: 0.2-veronica
+  description: |
+    Apache Mesos Master Node.
+  minimum_rancher_version: v0.56.0
+  maintainer: "Clayton Silva <clayton@xdevel.com.br>"
+  uuid: zk-0
+  questions:
+    - variable: "CLUSTER"
+      description: "Cluster Name (without spaces)"
+      label: "Cluster Name (without spaces)"
+      required: true
+      default: main-cluster
+      type: "string"
+    - variable: "MOUNTPOINT"
+      description: "Mount Point for Mesos"
+      label: "Mount Point for Mesos"
+      required: true
+      default: /home/core/dockerdata
+      type: "string"
+    - variable: "AUTH_USER"
+      description: "Default User to auth Mesos and http"
+      label: "Default User to auth Mesos and http"
+      required: true
+      default: main
+      type: "string"      
+    - variable: "AUTH_PASSWORD"
+      description: "Default Password to auth Mesos and http"
+      label: "Default Password to auth Mesos and http"
+      required: true
+      type: "string"      
+    - variable: "HOSTNAME"
+      description: "Hostname to Bind mesos-master http"
+      label: "HOSTNAME"
+      required: true
+      default: "my-mesos.com"
+      type: "string"      
+mesos-master:
+  health_check:
+    port: 5050
+    interval: 5000
+    unhealthy_threshold: 3
+    request_line: ''
+    healthy_threshold: 2
+    response_timeout: 5000

@@ -1,0 +1,24 @@
+mesos-master:
+  tty: true
+  image: gerencio/veronica-docker:0.2-mesos-master
+  volumes:
+  - ${MOUNTPOINT}/${CLUSTER}-master/hdfs:/tmp/hsperfdata_root -v 
+  - ${MOUNTPOINT}/${CLUSTER}-master:/tmp/mesos 
+  external_links:
+  - ${zookeeper}:zookeeper
+  environment:
+  - AUTH_USER=${AUTH_USER}
+  - AUTH_PASSWORD=${AUTH_PASSWORD}
+  - MESOS_VERSION=false  
+  - ZOOKEEPER_DATADIR=/var/lib/zookeeper 
+  - MESOS_HOSTNAME=${HOSTNAME}  
+  - MESOS_ZK=zookeeper:2181/${CLUSTER}-master
+  - MESOS_PORT=${PORT_BIND}
+  - MESOS_QUORUM=1
+  - MESOS_LOG_DIR=/var/log/mesos
+  - MESOS_AUTHENTICATE=true
+  - MESOS_AUTHENTICATE_SLAVES=true
+  - MESOS_AUTHENTICATE_FRAMEWORKS=true
+  - MESOS_CLUSTER=${CLUSTER}
+  - MESOS_CREDENTIALS=/credentials
+  memory-swap: -1
