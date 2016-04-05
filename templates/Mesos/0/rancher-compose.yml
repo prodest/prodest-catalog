@@ -1,6 +1,6 @@
 .catalog:
-  name: Mesos Master
-  version: 0.2-veronica
+  name: Mesos
+  version: 0.2-mesos-master-veronica
   description: |
     Apache Mesos Master Node.
   minimum_rancher_version: v0.56.0
