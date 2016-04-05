@@ -1,6 +1,6 @@
-name: Apache Mesos
+name: Apache Mesos (Master)
 description: |
-  Apache Mesos
+  Apache Mesos (Master)
 version: 0.2-veronica
 category: clustering
 maintainer: "CLayton Silva <clayton@xdevel.com.br>"

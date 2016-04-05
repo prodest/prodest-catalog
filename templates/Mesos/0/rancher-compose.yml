@@ -1,5 +1,5 @@
 .catalog:
-  name: Mesos
+  name: Mesos master
   version: 0.2-mesos-master-veronica
   description: |
     Apache Mesos Master Node.
