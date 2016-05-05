@@ -1,0 +1,14 @@
+.catalog:
+  name: "WSO2"
+  version: "v0.1.0-prodest"
+  description: "WSO2 ESB, DSS and API Manager"
+  uuid: wso2-0
+  minimum_rancher_version: v0.51.0
+  questions:
+    - variable: "DATA"
+      label: "Directory to mount WSO2"
+      description: "Directory to mount WSO2"
+      type: "string"
+      required: true
+      default: "./volumes/carbonapps"
+apim:
