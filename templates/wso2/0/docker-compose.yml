@@ -1,0 +1,21 @@
+esb:
+    image: prodest/wso2esb
+    volumes:
+        - "${DATA}/esb:/carbonapps"
+    links:
+        - dss
+    restart: always
+
+dss:
+    image: prodest/wso2dss
+    volumes:
+        - "${DATA}/dss:/carbonapps"
+    restart: always
+
+apim:
+    image: prodest/wso2apim
+    volumes:
+        - "${DATA}/apim:/carbonapps"
+    links:
+        - esb
+    #restart: always
