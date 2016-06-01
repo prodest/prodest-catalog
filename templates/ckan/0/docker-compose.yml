@@ -22,7 +22,7 @@ solr:
     - SOLR_CKAN_CORE=ckan-core
 
 datapusher:
-  image: prodest/datapusher
+  image: prodest/ckan-datapusher
 
 ckan:
   image: prodest/ckan
