@@ -1,0 +1,62 @@
+.catalog:
+  name: "CKAN"
+  version: "v0.1.0-prodest"
+  description: "CKAN stack with Solr, Postgres and Ckan-DataStore and Ckan-Datapusher plugins"
+  uuid: ckan-0
+  minimum_rancher_version: v0.51.0
+  questions:
+    - variable: "DATA"
+      label: "Directory to mount CKAN"
+      description: "Directory to mount CKAN"
+      type: "string"
+      required: true
+      default: "./volumes/ckan"
+    - variable: "SITE_ID"
+      label: "Site identifier"
+      description: "Site identifier (used as index in Solr)"
+      type: "string"
+      required: true
+      default: "default"
+    - variable: "SITE_URL"
+      label: "Site URL"
+      description: "Site URL (used for generating urls in CKAN)"
+      type: "string"
+      required: true
+      default: "http://127.0.0.1:5000"
+    - variable: "CKAN_USER"
+      label: "Postgres CKAN User"
+      description: "Postgres CKAN User"
+      type: "string"
+      required: true
+      default: "ckan_default"
+    - variable: "CKAN_PASS"
+      label: "Postgres CKAN Password"
+      description: "Postgres CKAN Password"
+      type: "string"
+      required: true
+      default: "ckan_pass"
+    - variable: "CKAN_DB"
+      label: "Postgres CKAN Database"
+      description: "Postgres CKAN Database"
+      type: "string"
+      required: true
+      default: "ckan_default"
+    - variable: "DATASTORE_USER"
+      label: "Postgres CKAN Datastore User"
+      description: "Postgres CKAN Datastore User"
+      type: "string"
+      required: true
+      default: "datastore_default"
+    - variable: "DATASTORE_PASS"
+      label: "Postgres CKAN Datastore Password"
+      description: "Postgres CKAN Datastore Password"
+      type: "string"
+      required: true
+      default: "datastore_pass"
+    - variable: "DATASTORE_DB"
+      label: "Postgres CKAN Datastore Database"
+      description: "Postgres CKAN Datastore Database"
+      type: "string"
+      required: true
+      default: "datastore_default"
+ckan:

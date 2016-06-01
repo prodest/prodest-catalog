@@ -1,0 +1,5 @@
+name: CKAN
+description: |
+  CKAN stack with Solr, Postgres and Ckan-DataStore and Ckan-Datapusher plugins
+version: v0.1.0-prodest
+category: Services
