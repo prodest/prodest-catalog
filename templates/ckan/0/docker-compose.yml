@@ -1,7 +1,6 @@
 postgres:
-  image: postgres:9.5.3
+  image: prodest/ckan-postgres
   volumes:
-    - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
     - "${DATA}/postgres:/var/lib/postgresql/data"
   environment:
     - PGDATA=/var/lib/postgresql/data
@@ -13,9 +12,8 @@ postgres:
     - "DATASTORE_DB=${DATASTORE_DB}"
 
 solr:
-  image: solr:6.0.0
+  image: prodest/ckan-solr
   volumes:
-    - ./solr/precreate-core.sh:/docker-entrypoint-initdb.d/precreate-core.sh
     - "${DATA}/solr:/opt/solr/server/solr/ckan-core"
   user: root
   environment:
