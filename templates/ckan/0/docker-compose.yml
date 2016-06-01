@@ -1,0 +1,48 @@
+postgres:
+  image: postgres:9.5.3
+  volumes:
+    - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+    - "${DATA}/postgres:/var/lib/postgresql/data"
+  environment:
+    - PGDATA=/var/lib/postgresql/data
+    - "CKAN_USER=${CKAN_USER}"
+    - "CKAN_PASSWORD=${CKAN_PASS}"
+    - "CKAN_DB=${CKAN_DB}"
+    - "DATASTORE_USER=${DATASTORE_USER}"
+    - "DATASTORE_PASSWORD=${DATASTORE_PASS}"
+    - "DATASTORE_DB=${DATASTORE_DB}"
+
+solr:
+  image: solr:6.0.0
+  volumes:
+    - ./solr/precreate-core.sh:/docker-entrypoint-initdb.d/precreate-core.sh
+    - "${DATA}/solr:/opt/solr/server/solr/ckan-core"
+  user: root
+  environment:
+    - SOLR_CKAN_CORE=ckan-core
+
+datapusher:
+  image: prodest/datapusher
+
+ckan:
+  image: prodest/ckan
+  links:
+    - postgres:postgres
+    - solr:solr
+    - datapusher:datapusher
+  volumes:
+    - "${DATA}/data:/var/lib/ckan/default"
+  environment:
+    - "CKAN_SQLALCHEMY_URL=postgresql://${CKAN_USER}:${CKAN_PASS}@postgres/${CKAN_DB}"
+    - "CKAN_DATASTORE_WRITE_URL=postgresql://${CKAN_USER}:${CKAN_PASS}@postgres/${DATASTORE_DB}"
+    - "CKAN_DATASTORE_READ_URL=postgresql://${DATASTORE_USER}:${DATASTORE_PASS}@postgres/${DATASTORE_DB}"
+    - "CKAN_SOLR_URL=http://solr:8983/solr/ckan-core"
+    - "CKAN_SITE_ID=${SITE_ID}"
+    - "CKAN_SITE_URL=${SITE_URL}"
+    - "CKAN_STORAGE_PATH=/var/lib/ckan/default"
+    - "CKAN_DATAPUSHER_URL=http://datapusher:8800/"
+    # - CKAN_SMTP_SERVER=
+    # - CKAN_SMTP_STARTTLS=
+    # - CKAN_SMTP_USER=
+    # - CKAN_SMTP_PASSWORD=
+    # - CKAN_SMTP_MAIL_FROM=
