@@ -1,7 +1,8 @@
 postgres:
   image: prodest/ckan-postgres
+  volume_driver: "${VOL_DRIVER}"  
   volumes:
-    - "${DATA}/postgres:/var/lib/postgresql/data"
+    - "${DATA_POSTGRES}:/var/lib/postgresql/data"
   environment:
     - PGDATA=/var/lib/postgresql/data
     - "CKAN_USER=${CKAN_USER}"
@@ -13,8 +14,9 @@ postgres:
 
 solr:
   image: prodest/ckan-solr
+  volume_driver: "${VOL_DRIVER}"  
   volumes:
-    - "${DATA}/solr:/opt/solr/server/solr/ckan-core"
+    - "${DATA_SOLR}:/opt/solr/server/solr/ckan-core"
   user: root
   environment:
     - SOLR_CKAN_CORE=ckan-core
@@ -28,8 +30,9 @@ ckan:
     - postgres:postgres
     - solr:solr
     - datapusher:datapusher
+  volume_driver: "${VOL_DRIVER}"
   volumes:
-    - "${DATA}/data:/var/lib/ckan/default"
+    - "${DATA_CKAN}:/var/lib/ckan/default"
   environment:
     - "CKAN_SQLALCHEMY_URL=postgresql://${CKAN_USER}:${CKAN_PASS}@postgres/${CKAN_DB}"
     - "CKAN_DATASTORE_WRITE_URL=postgresql://${CKAN_USER}:${CKAN_PASS}@postgres/${DATASTORE_DB}"
