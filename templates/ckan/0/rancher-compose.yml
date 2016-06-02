@@ -5,12 +5,30 @@
   uuid: ckan-0
   minimum_rancher_version: v0.51.0
   questions:
-    - variable: "DATA"
-      label: "Directory to mount CKAN"
-      description: "Directory to mount CKAN"
+    - variable: "DATA_CKAN"
+      label: "Directory to mount CKAN data"
+      description: "Directory to mount CKAN data"
       type: "string"
       required: true
-      default: "./volumes/ckan"
+      default: "/volumes/ckan"
+    - variable: "DATA_POSTGRES"
+      label: "Directory to mount CKAN Postgres"
+      description: "Directory to mount CKAN Postgres"
+      type: "string"
+      required: true
+      default: "/volumes/ckan_postgres"
+    - variable: "DATA_SOLR"
+      label: "Directory to mount CKAN Solr"
+      description: "Directory to mount CKAN Solr"
+      type: "string"
+      required: true
+      default: "/volumes/ckan_solr"
+    - variable: "VOL_DRIVER"
+      label: "Volume driver"
+      description: "Volume driver"
+      type: "string"
+      required: false
+      default: "convoy-nfs"
     - variable: "SITE_ID"
       label: "Site identifier"
       description: "Site identifier (used as index in Solr)"
