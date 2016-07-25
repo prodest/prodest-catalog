@@ -1,0 +1,51 @@
+.catalog:
+  name: "Elasticsearch"
+  version: "2.2.3-rancher1"
+  description: "Elasticsearch. You know, for search"
+  questions:
+    - variable: es_version
+      description: "Version of elasticsearch default repository image."
+      label: "Elasticsearch version"
+      type: "string"
+      required: true
+      default: "2.2.1"
+    - variable: cluster_name
+      description: "Unique name to assign to your Elasticsearch cluster."
+      label: "Cluster Name"
+      type: "string"
+      required: true
+      default: "es"
+    - variable: "datanode_volume"
+      label: "Volume do DataNode"
+      description: "Onde o datanode será montado"
+      type: "string"
+      required: true
+      default: "/home/core/dockerdata/es"
+elasticsearch-masters:
+  metadata:
+    elasticsearch:
+      yml:
+        cluster.name: "${cluster_name}"
+        node.name: "$${HOSTNAME}"
+        node.data: "false"
+        node.master: "true"
+        network.host: "_site_"
+elasticsearch-datanodes:
+  metadata:
+    elasticsearch:
+      yml:
+        cluster.name: "${cluster_name}"
+        node.name: "$${HOSTNAME}"
+        node.data: "true"
+        node.master: "false"
+        http.enabled: "false"
+        network.host: "_site_"
+elasticsearch-clients:
+  metadata:
+    elasticsearch:
+      yml:
+       cluster.name: "${cluster_name}"
+       node.name: "$${HOSTNAME}"
+       node.data: "false"
+       node.master: "false"
+       network.host: "_site_"
