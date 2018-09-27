@@ -1,5 +1,5 @@
 name: Elasticsearch Cluster 6.x.x
 description: |
   Elasticsearch, you know for search!
-version: 6.3.2-rancher1
+version: 6.4.1-rancher1
 category: ELK
